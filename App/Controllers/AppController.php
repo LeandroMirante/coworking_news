@@ -78,6 +78,11 @@ class AppController extends Action
         $this->view->detalhes = $post->getById();
         $this->view->total_posts = $post->getTotalPosts();
 
+        $comentario = Container::getModel('Comentario');
+        $comentario->__set('id_post', $_GET['id']);
+
+        $this->view->comentarios = $comentario->getByIdPost();
+
         $this->render('leia_mais', 'layout');
     }
 
@@ -126,6 +131,23 @@ class AppController extends Action
 
     public function comentar()
     {
-        print_r($_POST);
+        $comentario = Container::getModel('Comentario');
+        $comentario->__set('id_post', $_POST['id_post']);
+        $comentario->__set('id_usuario', $_POST['id_usuario']);
+        $comentario->__set('nome_usuario', $_POST['nome_usuario']);
+        $comentario->__set('comentario', $_POST['comentario']);
+
+        $comentario->salvar();
+
+        header('Location: /leia_mais?id=' . $_POST['id_post']);
+    }
+
+    public function excluir_comentario()
+    {
+        $comentario = Container::getModel('Comentario');
+        $comentario->__set('id', $_GET['id']);
+        $comentario->excluir();
+
+        header('Location: /leia_mais?id=' . $_GET['id_post']);
     }
 }

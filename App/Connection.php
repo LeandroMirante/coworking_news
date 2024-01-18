@@ -9,7 +9,7 @@ class Connection
     {
         try {
             $conn = new \PDO(
-                'mysql:host=localhost;dbname=tec_blog;charset=utf8',
+                'mysql:host=localhost;dbname=coworking_news;charset=utf8',
                 'root',
                 ''
             );

@@ -10,7 +10,7 @@
             <?php } ?>
         </div>
 
-        <h6><?= $this->view->detalhes['data_atualizacao'] ?></h6>
+        <h6>Autor: <?= $this->view->detalhes['nome_autor'] ?> - <?= $this->view->detalhes['data_atualizacao'] ?></h6>
         <small>Criado em: <?= $this->view->detalhes['data'] ?></small>
         <div class="card-body text-center">
             <p><?= $this->view->detalhes['conteudo'] ?></p>
@@ -23,6 +23,7 @@
         <div class="form-group">
             <input type="hidden" name="id_post" value="<?= $_GET['id'] ?>">
             <input type="hidden" name="id_usuario" value="<?= $_SESSION['id'] ?>">
+            <input type="hidden" name="nome_usuario" value="<?= $_SESSION['nome'] ?>">
 
             <label for="textoArea">Escreva o que você achou:</label>
             <textarea name="comentario" class="form-control" id="textoArea" rows="3"></textarea>
@@ -30,20 +31,21 @@
         <button type="submit" class="btn btn-success">Comentar</button>
     </form>
 
-    <div class="p-2 m-2 card">
-        <div class="d-flex justify-content-between align-items-center">
-            <h6>Leandro - 20/08/2000</h6>
-            <?php if ($_SESSION['id'] == $this->view->detalhes['id_autor']) { ?>
-                <span>
-                    <a class="btn btn-warning float-right" href="/editar_post?id=<?= $this->view->detalhes['id'] ?>">Editar</a>
-                    <a class="btn btn-danger float-right" href="/excluir_post?id=<?= $this->view->detalhes['id'] ?>">Excluir</a>
-                </span>
-            <?php } ?>
+    <?php foreach ($this->view->comentarios as $indice => $comentario) { ?>
+
+        <div class="p-2 m-2 card">
+            <div class="d-flex justify-content-between align-items-center">
+                <h6><?= $comentario['nome_usuario'] ?> - <?= $comentario['data'] ?></h6>
+                <?php if ($_SESSION['id'] == $comentario['id_usuario']) { ?>
+                    <span>
+                        <a class="btn btn-danger float-right" href="/excluir_comentario?id=<?= $comentario['id'] ?>&id_post=<?= $_GET['id'] ?>">Excluir</a>
+                    </span>
+                <?php } ?>
+            </div>
+
+            <p><?= $comentario['comentario'] ?></p>
         </div>
-
-        <p>Meu belissimo comentário</p>
-    </div>
-
+    <?php } ?>
 </div>
 
 <script>

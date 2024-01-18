@@ -1,44 +1,40 @@
-<body>
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class=" card_logo">
-                        <img src="../img/logo.png" class="card-img-top" alt="Imagem de Capa">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Registrar novo usuário</h5>
-                        <form action="/cadastrar" method="post">
-                            <div class="form-group">
-                                <label for="usuario">Nome</label>
-                                <input value='<?= $this->view->usuario['nome'] ?>' name="nome" type="text" class="form-control" id="usuario" placeholder="Digite seu nome">
-                            </div>
-                            <div class="form-group">
-                                <label for="usuario">E-mail</label>
-                                <input value='<?= $this->view->usuario['email'] ?>' name="email" type="text" class="form-control" id="usuario" placeholder="Digite seu e-mail">
-                            </div>
-                            <div class="form-group">
-                                <label for="senha">Senha</label>
-                                <input value='<?= $this->view->usuario['senha'] ?>' name="senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha">
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-3">Registrar</button>
-                            <?php if ($this->view->error != '') { ?>
-                                <small class='form-text text-danger'><?= $this->view->error ?></small>
+   <div class="container">
+       <div class="row justify-content-center mt-5">
+           <div class="col-md-6">
+               <div class="card" style="background-color: #f5ede8;">
+                   <div class=" card_logo">
+                       <img src="../img/logo.png" class="card-img-top" alt="Imagem de Capa">
+                   </div>
+                   <div class="card-body">
+                       <h5 class="card-title">Registrar novo usuário</h5>
+                       <form action="/cadastrar" method="post">
+                           <div class="form-group">
+                               <label for="usuario">Nome</label>
+                               <input value='<?= $this->view->usuario['nome'] ?>' name="nome" type="text" class="form-control" id="usuario" placeholder="Digite seu nome">
+                           </div>
+                           <div class="form-group">
+                               <label for="usuario">E-mail</label>
+                               <input value='<?= $this->view->usuario['email'] ?>' name="email" type="text" class="form-control" id="usuario" placeholder="Digite seu e-mail">
+                           </div>
+                           <div class="form-group">
+                               <label for="senha">Senha</label>
+                               <input value='<?= $this->view->usuario['senha'] ?>' name="senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+                           </div>
+                           <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+                           <?php if ($this->view->error != '') { ?>
+                               <small class='form-text text-danger'><?= $this->view->error ?></small>
 
-                            <?php } ?>
-                        </form>
-                        <div class="mt-3">
-                            <p>Já possui uma conta? <a href="/">Faça o login!</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                           <?php } ?>
+                       </form>
+                       <div class="mt-3">
+                           <p>Já possui uma conta? <a href="/">Faça o login!</a></p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
 
-    <!-- Adicione o link para o Bootstrap JS e o Popper.js, necessários para funcionalidades do Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

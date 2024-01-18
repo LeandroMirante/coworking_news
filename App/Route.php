@@ -86,6 +86,12 @@ class Route extends Bootstrap
             'action' => 'comentar'
         );
 
+        $routes['excluir_comentario'] = array(
+            'route' => '/excluir_comentario',
+            'controller' => 'AppController',
+            'action' => 'excluir_comentario'
+        );
+
         $this->setRoutes($routes);
     }
 }
