@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coworking News</title>
+    <style>
+        .card-img-top {
+            max-width: 50%;
+            height: auto;
+        }
+
+        .card_logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body style="background-color: #f5ede8;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-2">
+                <img src="../img/logo.png" alt="Logo" class="img-fluid">
+            </div>
+            <div class="col-6">
+                <form method="get" action="/timeline">
+                    <div class="input-group">
+                        <input name='pesquisarPor' class="form-control" type="search" placeholder="Pesquisar" aria-label="Search">
+                        <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-4">
+
+                <div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $_SESSION['nome'] ?></h5>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="card-text">Total de Posts: <?= $this->view->total_posts['total_posts'] ?></span>
+                            <a href="/sair" class="btn btn-danger float-right">Sair</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/timeline">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/timeline?categoria=trabalho">Trabalho</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/timeline?categoria=tecnologia">Tecnologia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/timeline?categoria=empreendedorismo">Empreendedorismo</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <?= $this->content()  ?>
+
+</body>
+
+</html>
